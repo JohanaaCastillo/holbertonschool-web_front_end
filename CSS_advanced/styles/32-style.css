@@ -8,7 +8,7 @@
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
 
-html {
+ html {
     line-height: 1.15; /* 1 */
     -webkit-text-size-adjust: 100%; /* 2 */
 }
@@ -421,6 +421,8 @@ a:active {
     color: var(--button-hover-color);
     text-decoration: var(--button-hover-text-decoration);
     background-color: var(--button-hover-background);
+    transition-duration: var(--transition-duration);
+    transition-property: color, background-color;
 }
 
 .visually-hidden {
@@ -521,6 +523,7 @@ a:active {
     background-color: var(--color-white);
     width: 0;
     height: 0.2rem;
+    transition: var(--transition-duration) var(--transition-cubic-bezier);
 }
 
 .nav .nav-item:hover > .nav-link::before {
@@ -611,6 +614,9 @@ ul.row {
     --header-logo-link-position: absolute;
     --header-logo-link-top: -1rem;
     --header-logo-link-left: 0;
+    /*---------Create some custom properties-----------------------------------------*/
+    --transition-duration: .3s;
+    --transition-cubic-bezier: cubic-bezier(0.17, 0.67, 0, 1.01);
 
     /*---------0:top 0:rigth  3:buttom  0:left-----------------------------------------*/
     --nav-item-margin: 0 0 3rem 0;
@@ -685,10 +691,26 @@ h6 {
     height: 10rem;
 }
 
+.card-testimonial .card-quote {
+    position: relative;
+}
+
 .card-testimonial .card-quote cite {
     display: block;
     padding-top: 1rem;
     color: var(--color-primary);
+}
+
+
+
+.card-testimonial .card-quote::before {
+    content: "\201C";
+    position: absolute;
+    top: -4.5rem;
+    left: -1rem;
+    color: #efeded;
+    font-size: 10rem;
+    z-index: -1;
 }
 
 .card-work .card-outer {
@@ -709,6 +731,7 @@ h6 {
     left: -0.1rem;
     right: -0.1rem;
     z-index: 1;
+    transition: var(--transition-duration) var(--transition-cubic-bezier);
 }
 
 .card-work:hover .card-inner {
@@ -741,12 +764,12 @@ h6 {
     opacity: 1;
 }
 
-.card-testimonial .card-quote::before {
-    content: "\201C";
-    position: absolute;
-    top: -4.5rem;
-    left: -1rem;
-    color: #efeded;
-    font-size: 10rem;
-    z-index: -1;
+/*---------Add transformations on the card work---------------------------*/
+.card-work:hover .card-image {
+    transform: scale(1.2);
+    transition: var(--transition-duration) var(--transition-cubic-bezier); 
+}
+
+.card-work:hover .card-outer {
+    transform: scale(0.95);
 }
