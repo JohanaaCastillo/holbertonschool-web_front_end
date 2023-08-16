@@ -614,7 +614,7 @@ ul.row {
 
     /*---------0:top 0:rigth  3:buttom  0:left-----------------------------------------*/
     --nav-item-margin: 0 0 3rem 0;
-    --nav-item-link-hover: var(--color-primary);
+    --nav-item-link-hover: var(--color-white);
 }
 /*------*/
 h1,
